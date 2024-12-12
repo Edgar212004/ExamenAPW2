@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q5DW0dWw6hs=",
+  "dgSpecHash": "20PG1Ko8FkM=",
   "success": true,
-  "projectFilePath": "D:\\UNI\\Avanzada Web\\APW2.Web\\APW2.Data\\APW2.Data.csproj",
+  "projectFilePath": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\APW2.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\XPC\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\XPC\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

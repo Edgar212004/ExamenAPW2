@@ -1,0 +1,16 @@
+D:\ExamenAPW2\APW2.Web\APW2.Service\bin\Debug\net8.0\APW2.Service.deps.json
+D:\ExamenAPW2\APW2.Web\APW2.Service\bin\Debug\net8.0\APW2.Service.dll
+D:\ExamenAPW2\APW2.Web\APW2.Service\bin\Debug\net8.0\APW2.Service.pdb
+D:\ExamenAPW2\APW2.Web\APW2.Service\bin\Debug\net8.0\APW2.Data.dll
+D:\ExamenAPW2\APW2.Web\APW2.Service\bin\Debug\net8.0\APW2.Data.pdb
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.csproj.AssemblyReference.cache
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.AssemblyInfoInputs.cache
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.AssemblyInfo.cs
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.csproj.CoreCompileInputs.cache
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.sourcelink.json
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Ser.A37D4BCF.Up2Date
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.dll
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\refint\APW2.Service.dll
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\APW2.Service.pdb
+D:\ExamenAPW2\APW2.Web\APW2.Service\obj\Debug\net8.0\ref\APW2.Service.dll

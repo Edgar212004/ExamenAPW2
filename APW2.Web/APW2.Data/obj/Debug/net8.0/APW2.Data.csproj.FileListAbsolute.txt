@@ -12,3 +12,18 @@ D:\UNI\Avanzada Web\APW2.Web\APW2.Data\obj\Debug\net8.0\ref\APW2.Data.dll
 D:\UNI\Avanzada Web\APW2.Web\APW2.Data\bin\Debug\net8.0\APW2.Data.runtimeconfig.json
 D:\UNI\Avanzada Web\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.genruntimeconfig.cache
 D:\UNI\Avanzada Web\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.csproj.AssemblyReference.cache
+D:\ExamenAPW2\APW2.Web\APW2.Data\bin\Debug\net8.0\APW2.Data.deps.json
+D:\ExamenAPW2\APW2.Web\APW2.Data\bin\Debug\net8.0\APW2.Data.runtimeconfig.json
+D:\ExamenAPW2\APW2.Web\APW2.Data\bin\Debug\net8.0\APW2.Data.dll
+D:\ExamenAPW2\APW2.Web\APW2.Data\bin\Debug\net8.0\APW2.Data.pdb
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.csproj.AssemblyReference.cache
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.AssemblyInfoInputs.cache
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.AssemblyInfo.cs
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.csproj.CoreCompileInputs.cache
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.sourcelink.json
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.dll
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\refint\APW2.Data.dll
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.pdb
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\APW2.Data.genruntimeconfig.cache
+D:\ExamenAPW2\APW2.Web\APW2.Data\obj\Debug\net8.0\ref\APW2.Data.dll

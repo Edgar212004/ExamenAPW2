@@ -1,0 +1,89 @@
+﻿@model APW2.Data.Models.TaskManager
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TaskManager</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TaskId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Priority" class="control-label"></label>
+                <input asp-for="Priority" class="form-control" />
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssignedTo" class="control-label"></label>
+                <input asp-for="AssignedTo" class="form-control" />
+                <span asp-validation-for="AssignedTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifiedDate" class="control-label"></label>
+                <input asp-for="ModifiedDate" class="form-control" />
+                <span asp-validation-for="ModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompletedDate" class="control-label"></label>
+                <input asp-for="CompletedDate" class="form-control" />
+                <span asp-validation-for="CompletedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsArchived" class="control-label"></label>
+                <input asp-for="IsArchived" class="form-control" />
+                <span asp-validation-for="IsArchived" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

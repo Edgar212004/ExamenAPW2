@@ -1,4 +1,16 @@
+using APW2.Data.Models;
+using APW2.Data.Repositorio;
+using APW2.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configura la conexión a la base de datos en appsettings.json
+builder.Services.AddDbContext<ProcessdbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ITaskManagerService, TaskManagerService>();
+builder.Services.AddScoped<ITaskManagerRepository, TaskManagerRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
