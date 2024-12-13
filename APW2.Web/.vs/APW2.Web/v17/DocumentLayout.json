@@ -1,0 +1,210 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ExamenAPW2\\APW2.Web\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\views\\taskmanagers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\views\\taskmanagers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24D4452C-04D4-448C-A252-DD294E8ED45A}|APW2.Service\\APW2.Service.csproj|d:\\examenapw2\\apw2.web\\apw2.service\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24D4452C-04D4-448C-A252-DD294E8ED45A}|APW2.Service\\APW2.Service.csproj|solutionrelative:apw2.service\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23B8893-5559-4787-89DF-2C3E575FF0E4}|APW2.Data\\APW2.Data.csproj|d:\\examenapw2\\apw2.web\\apw2.data\\repositorio\\taskmanagerrepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23B8893-5559-4787-89DF-2C3E575FF0E4}|APW2.Data\\APW2.Data.csproj|solutionrelative:apw2.data\\repositorio\\taskmanagerrepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23B8893-5559-4787-89DF-2C3E575FF0E4}|APW2.Data\\APW2.Data.csproj|d:\\examenapw2\\apw2.web\\apw2.data\\repositorio\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23B8893-5559-4787-89DF-2C3E575FF0E4}|APW2.Data\\APW2.Data.csproj|solutionrelative:apw2.data\\repositorio\\repositorybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 663,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d562c6a0-d2fe-4c19-a8b3-e5cbc09bf375}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{5c82a791-7c9f-441e-952b-8848655dd85e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{5e929736-0e81-4d52-a78e-546a1649faca}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "APW2.Web\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "APW2.Web\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T04:36:28.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaskManagersController.cs",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\TaskManagersController.cs",
+              "RelativeDocumentMoniker": "APW2.Web\\Controllers\\TaskManagersController.cs",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\TaskManagersController.cs",
+              "RelativeToolTip": "APW2.Web\\Controllers\\TaskManagersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T04:16:10.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "APW2.Web\\wwwroot\\favicon.ico",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\wwwroot\\favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "APW2.Web\\wwwroot\\favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2024-12-13T04:36:17.607Z",
+              "EditorCaption": " -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Views\\TaskManagers\\Index.cshtml",
+              "RelativeDocumentMoniker": "APW2.Web\\Views\\TaskManagers\\Index.cshtml",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Views\\TaskManagers\\Index.cshtml",
+              "RelativeToolTip": "APW2.Web\\Views\\TaskManagers\\Index.cshtml",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-13T04:25:00.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskManagerService.cs",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Service\\TaskManagerService.cs",
+              "RelativeDocumentMoniker": "APW2.Service\\TaskManagerService.cs",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Service\\TaskManagerService.cs",
+              "RelativeToolTip": "APW2.Service\\TaskManagerService.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAUwJgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T04:18:25.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskManagerRepositoy.cs",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
+              "RelativeDocumentMoniker": "APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
+              "RelativeToolTip": "APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T04:14:04.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RepositoryBase.cs",
+              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\RepositoryBase.cs",
+              "RelativeDocumentMoniker": "APW2.Data\\Repositorio\\RepositoryBase.cs",
+              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\RepositoryBase.cs",
+              "RelativeToolTip": "APW2.Data\\Repositorio\\RepositoryBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T04:13:39.507Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 298,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cdbdee54-b399-484b-b763-db2c3393d646}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d98f7c4d-b652-422c-bcdf-3d0e2b2da2c1}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 150,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

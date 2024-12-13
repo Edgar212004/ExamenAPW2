@@ -1,16 +1,26 @@
-﻿using APW2.Data.Models;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+using APW2.Data.Models;
 using APW2.Data.Repositorio;
 
 namespace APW2.Services
 {
+    public enum TaskStatus
+    {
+        Pending,
+        InProgress,
+        Completed,
+        Canceled
+    }
 
     public interface ITaskManagerService
     {
-        IEnumerable<TaskManager> GetAllTasks();
-        TaskManager? GetTaskById(int id);
-        void CreateTask(TaskManager task);
-        void UpdateTask(TaskManager task);
-        void DeleteTask(int id);
+        Task<TaskManager> ExecuteTaskAsync(int taskId, CancellationToken cancellationToken);
+        Task<bool> CancelTaskAsync(int taskId);
+
+        // Métodos originales convertidos para manejar strings
         IEnumerable<TaskManager> GetTasksByStatus(string status);
         IEnumerable<TaskManager> GetTasksByPriority(string priority);
         IEnumerable<TaskManager> GetArchivedTasks();
@@ -19,49 +29,112 @@ namespace APW2.Services
     public class TaskManagerService : ITaskManagerService
     {
         private readonly ITaskManagerRepository _repository;
+        private readonly ConcurrentDictionary<int, CancellationTokenSource> _runningTasks;
 
         public TaskManagerService(ITaskManagerRepository repository)
         {
             _repository = repository;
+            _runningTasks = new ConcurrentDictionary<int, CancellationTokenSource>();
         }
 
-        public IEnumerable<TaskManager> GetAllTasks()
+        // Métodos de conversión de enum a string y viceversa
+        private string ConvertStatusToString(TaskStatus status)
         {
-            return _repository.GetAll();
+            return status.ToString();
         }
 
-        public TaskManager? GetTaskById(int id)
+        private TaskStatus ConvertStringToStatus(string status)
         {
-            return _repository.GetById(id);
+            return Enum.TryParse(status, out TaskStatus result)
+                ? result
+                : TaskStatus.Pending; // Default value
         }
 
-        public void CreateTask(TaskManager task)
+        public async Task<TaskManager> ExecuteTaskAsync(int taskId, CancellationToken cancellationToken)
         {
-            if (task == null) throw new ArgumentNullException(nameof(task));
+            var task = _repository.GetById(taskId);
+            if (task == null)
+                throw new KeyNotFoundException($"Task with ID {taskId} not found.");
 
-            // Business logic can be added here if necessary
-            task.CreatedDate = DateTime.Now;
-            _repository.Add(task);
+            // Verificar si ya hay una tarea en ejecución
+            if (_runningTasks.ContainsKey(taskId))
+                throw new InvalidOperationException("Task is already running.");
+
+            // Crear un CancellationTokenSource para esta ejecución
+            var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            _runningTasks[taskId] = cts;
+
+            try
+            {
+                // Cambiar estado a In Progress
+                task.Status = ConvertStatusToString(TaskStatus.InProgress);
+                _repository.Update(task);
+
+                // Simular long-running operation
+                await SimulateLongRunningOperationAsync(task, cts.Token);
+
+                // Si no fue cancelada, marcar como completada
+                if (!cts.Token.IsCancellationRequested)
+                {
+                    task.Status = ConvertStatusToString(TaskStatus.Completed);
+                    _repository.Update(task);
+                }
+
+                return task;
+            }
+            catch (OperationCanceledException)
+            {
+                // Manejar cancelación
+                task.Status = ConvertStatusToString(TaskStatus.Canceled);
+                _repository.Update(task);
+                throw;
+            }
+            finally
+            {
+                // Remover la tarea de las tareas en ejecución
+                _runningTasks.TryRemove(taskId, out _);
+            }
         }
 
-        public void UpdateTask(TaskManager task)
+        private async Task SimulateLongRunningOperationAsync(TaskManager task, CancellationToken cancellationToken)
         {
-            if (task == null) throw new ArgumentNullException(nameof(task));
+            try
+            {
+                // Esperar 5 segundos entre tareas
+                await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
 
-            // Additional validation or business logic
-            task.ModifiedDate = DateTime.Now;
-            _repository.Update(task);
+                // Simular operación de 10 segundos
+                using var longRunningCts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+                var linkedToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, longRunningCts.Token).Token;
+
+                await Task.Run(() =>
+                {
+                    // Simular trabajo intensivo
+                    for (int i = 0; i < 10; i++)
+                    {
+                        linkedToken.ThrowIfCancellationRequested();
+                        Thread.Sleep(1000); // Simular trabajo
+                    }
+                }, linkedToken);
+            }
+            catch (OperationCanceledException)
+            {
+                // Manejar cancelación específicamente
+                throw;
+            }
         }
 
-        public void DeleteTask(int id)
+        public async Task<bool> CancelTaskAsync(int taskId)
         {
-            var task = _repository.GetById(id);
-            if (task == null) throw new KeyNotFoundException($"Task with ID {id} not found.");
-
-            // Additional logic before deletion (e.g., checking permissions)
-            _repository.Delete(id);
+            if (_runningTasks.TryGetValue(taskId, out var cts))
+            {
+                cts.Cancel();
+                return true;
+            }
+            return false;
         }
 
+        // Métodos para compatibilidad con la interfaz original
         public IEnumerable<TaskManager> GetTasksByStatus(string status)
         {
             return _repository.GetByStatus(status);

@@ -1,43 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using APW2.Data.Models;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+using APW2.Data.Repositorio;
+using APW2.Services;
 
 namespace APW2.Web.Controllers
 {
     public class TaskManagersController : Controller
     {
-        private readonly ProcessdbContext _context;
+        private readonly ITaskManagerRepository _repository;
+        private readonly ITaskManagerService _taskManagerService;
 
-        public TaskManagersController(ProcessdbContext context)
+        public TaskManagersController(
+            ITaskManagerRepository repository,
+            ITaskManagerService taskManagerService)
         {
-            _context = context;
-        }
-
-        // GET: TaskManagers
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.TaskManagers.ToListAsync());
-        }
-
-        // GET: TaskManagers/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taskManager = await _context.TaskManagers
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (taskManager == null)
-            {
-                return NotFound();
-            }
-
-            return View(taskManager);
+            _repository = repository;
+            _taskManagerService = taskManagerService;
         }
 
         // GET: TaskManagers/Create
@@ -46,31 +24,37 @@ namespace APW2.Web.Controllers
             return View();
         }
 
-        // POST: TaskManagers/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TaskId,Name,Description,Status,Priority,AssignedTo,CreatedDate,ModifiedDate,DueDate,CompletedDate,Category,Notes,IsArchived")] TaskManager taskManager)
-        {
-            if (ModelState.IsValid)
-            {
-                taskManager.CreatedDate = DateTime.Now;
-                taskManager.Status = "Pending"; // Set default status
-                _context.Add(taskManager);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(taskManager);
-        }
-
         // GET: TaskManagers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var taskManager = await _context.TaskManagers.FindAsync(id);
+            var taskManager = _repository.GetById(id.Value);
+            if (taskManager == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskManager);
+        }
+
+        // GET: TaskManagers
+        public IActionResult Index()
+        {
+            return View(_repository.GetAll());
+        }
+
+        // GET: TaskManagers/Details/5
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var taskManager = _repository.GetById(id.Value);
             if (taskManager == null)
             {
                 return NotFound();
@@ -78,10 +62,26 @@ namespace APW2.Web.Controllers
             return View(taskManager);
         }
 
-        // POST: TaskManagers/Edit/5
+        // POST: TaskManagers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TaskId,Name,Description,Status,Priority,AssignedTo,CreatedDate,ModifiedDate,DueDate,CompletedDate,Category,Notes,IsArchived")] TaskManager taskManager)
+        public IActionResult Create(TaskManager taskManager)
+        {
+            if (ModelState.IsValid)
+            {
+                taskManager.CreatedDate = DateTime.Now;
+                taskManager.Status = "Pending";
+                _repository.Add(taskManager);
+                return RedirectToAction(nameof(Index));
+            }
+            // Si llegamos aquí, algo falló, volver a mostrar el formulario
+            return View(taskManager);
+        }
+
+        // POST: TaskManagers/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, TaskManager taskManager)
         {
             if (id != taskManager.TaskId)
             {
@@ -93,55 +93,27 @@ namespace APW2.Web.Controllers
                 try
                 {
                     taskManager.ModifiedDate = DateTime.Now;
-                    _context.Update(taskManager);
-                    await _context.SaveChangesAsync();
+                    _repository.Update(taskManager);
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch
                 {
-                    if (!TaskManagerExists(taskManager.TaskId))
+                    if (_repository.GetById(taskManager.TaskId) == null)
                     {
                         return NotFound();
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
+            // Si llegamos aquí, algo falló, volver a mostrar el formulario
             return View(taskManager);
         }
 
-        // GET: TaskManagers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: TaskManagers/Delete
+        [HttpPost]
+        public IActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var taskManager = await _context.TaskManagers
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (taskManager == null)
-            {
-                return NotFound();
-            }
-
-            return View(taskManager);
-        }
-
-        // POST: TaskManagers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var taskManager = await _context.TaskManagers.FindAsync(id);
-            if (taskManager != null)
-            {
-                _context.TaskManagers.Remove(taskManager);
-            }
-
-            await _context.SaveChangesAsync();
+            _repository.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -149,76 +121,97 @@ namespace APW2.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ExecuteAllTasks()
         {
-            var tasks = await _context.TaskManagers
-                .Where(t => t.Status != "Completed" && t.Status != "Stopped")
-                .ToListAsync();
+            var tasks = _repository.GetAll().ToList();
+            var results = new List<object>();
 
             foreach (var task in tasks)
             {
-                task.Status = "In Progress";
-                task.ModifiedDate = DateTime.Now;
+                try
+                {
+                    // Crear un CancellationTokenSource con un timeout
+                    using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+
+                    // Ejecutar la tarea de manera asíncrona
+                    var executedTask = await _taskManagerService.ExecuteTaskAsync(task.TaskId, cts.Token);
+
+                    results.Add(new
+                    {
+                        TaskId = task.TaskId,
+                        Status = executedTask.Status,
+                        Success = true
+                    });
+                }
+                catch (OperationCanceledException)
+                {
+                    results.Add(new
+                    {
+                        TaskId = task.TaskId,
+                        Status = "Canceled",
+                        Success = false
+                    });
+                }
+                catch (Exception ex)
+                {
+                    results.Add(new
+                    {
+                        TaskId = task.TaskId,
+                        Status = "Error",
+                        Success = false,
+                        Message = ex.Message
+                    });
+                }
             }
 
-            await _context.SaveChangesAsync();
+            // Si es una solicitud AJAX, devolver resultados como JSON
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(results);
+            }
+
+            // Si no es una solicitud AJAX, redirigir al índice
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: TaskManagers/StopTask/5
+        // POST: TaskManagers/StopTask
         [HttpPost]
         public async Task<IActionResult> StopTask(int id)
         {
-            var task = await _context.TaskManagers.FindAsync(id);
-
-            if (task == null)
+            try
             {
-                return NotFound();
+                var result = await _taskManagerService.CancelTaskAsync(id);
+
+                if (result)
+                {
+                    // Opcional: actualizar el estado de la tarea en el repositorio
+                    var task = _repository.GetById(id);
+                    if (task != null)
+                    {
+                        task.Status = "Canceled";
+                        task.ModifiedDate = DateTime.Now;
+                        _repository.Update(task);
+                    }
+
+                    // Si es una solicitud AJAX, devolver JSON
+                    if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                    {
+                        return Json(new { success = true, message = "Task cancelled successfully" });
+                    }
+                }
+
+                // Si no es una solicitud AJAX o la cancelación falló
+                return RedirectToAction(nameof(Index));
             }
-
-            task.Status = "Stopped";
-            task.ModifiedDate = DateTime.Now;
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        // POST: TaskManagers/CompleteTask/5
-        [HttpPost]
-        public async Task<IActionResult> CompleteTask(int id)
-        {
-            var task = await _context.TaskManagers.FindAsync(id);
-
-            if (task == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                // Si es una solicitud AJAX, devolver error como JSON
+                if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                {
+                    return Json(new { success = false, message = ex.Message });
+                }
+
+                // Si no es una solicitud AJAX, lanzar la excepción
+                throw;
             }
-
-            task.Status = "Completed";
-            task.CompletedDate = DateTime.Now;
-            task.ModifiedDate = DateTime.Now;
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        // POST: TaskManagers/NewLoad
-        [HttpPost]
-        public IActionResult NewLoad()
-        {
-            // Check if there are any tasks
-            var hasTasks = _context.TaskManagers.Any();
-
-            if (hasTasks)
-            {
-                return BadRequest("Cannot create new load when tasks exist.");
-            }
-
-            // Logic for creating a new batch of tasks could go here
-            return RedirectToAction(nameof(Create));
-        }
-
-        private bool TaskManagerExists(int id)
-        {
-            return _context.TaskManagers.Any(e => e.TaskId == id);
         }
     }
 }

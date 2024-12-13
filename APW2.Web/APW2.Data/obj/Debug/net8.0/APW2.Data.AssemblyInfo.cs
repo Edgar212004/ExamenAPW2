@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APW2.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8787a958162cfac1aca8374797aa87e50383990")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36d1f02bcaf5146cf8de23c207dc3b81713b9ff0")]
 [assembly: System.Reflection.AssemblyProductAttribute("APW2.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APW2.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
