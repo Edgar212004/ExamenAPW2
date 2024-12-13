@@ -1,101 +1,129 @@
 ﻿@model IEnumerable<APW2.Data.Models.TaskManager>
-
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Task Manager</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form asp-action="ExecuteAllTasks" method="post">
+            <button type="submit" class="btn btn-primary" id="executeAllBtn">Execute All Tasks</button>
+        </form>
+    </div>
+    <div class="col-md-6 text-right">
+        <a asp-action="Create" class="btn btn-success" id="newLoadBtn" disabled>New Load</a>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Priority)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AssignedTo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompletedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsArchived)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>@Html.DisplayNameFor(model => model.Priority)</th>
+            <th>@Html.DisplayNameFor(model => model.AssignedTo)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ModifiedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.DueDate)</th>
+            <th>@Html.DisplayNameFor(model => model.CompletedDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Category)</th>
+            <th>@Html.DisplayNameFor(model => model.Notes)</th>
+            <th>@Html.DisplayNameFor(model => model.IsArchived)</th>
+            <th>Actions</th>
+            <th>Stop/Cancel</th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignedTo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompletedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsArchived)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
-            </td>
-        </tr>
-}
+    <tbody id="tasksTableBody">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+                <td>@Html.DisplayFor(modelItem => item.AssignedTo)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.ModifiedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.CompletedDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                <td>@Html.DisplayFor(modelItem => item.Notes)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsArchived)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
+                </td>
+                <td>
+                    <form asp-action="StopTask" method="post" class="stop-task-form">
+                        <input type="hidden" name="id" value="@item.TaskId" />
+                        <button type="submit" class="btn btn-warning btn-sm">Stop/Cancel</button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to check and update New Load button state
+            function updateNewLoadButton() {
+                var taskCount = $('#tasksTableBody tr').length;
+
+                // Enable/disable New Load button based on task count
+                $('#newLoadBtn').prop('disabled', taskCount > 0);
+            }
+
+            // Call on page load
+            updateNewLoadButton();
+
+            // Handle Stop/Cancel form submission
+            $('.stop-task-form').on('submit', function (e) {
+                e.preventDefault();
+                var form = $(this);
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function (result) {
+                        // Remove the task row
+                        form.closest('tr').remove();
+
+                        // Update New Load button state
+                        updateNewLoadButton();
+                    },
+                    error: function (xhr) {
+                        alert('Error stopping task');
+                    }
+                });
+            });
+
+            // Handle Delete action links
+            $('a[asp-action="Delete"]').on('click', function (e) {
+                e.preventDefault();
+                var link = $(this);
+
+                $.ajax({
+                    url: link.attr('href'),
+                    type: 'POST',
+                    success: function (result) {
+                        // Remove the task row
+                        link.closest('tr').remove();
+
+                        // Update New Load button state
+                        updateNewLoadButton();
+                    },
+                    error: function (xhr) {
+                        alert('Error deleting task');
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APW2.Data.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace APW2.Web.Controllers
 {
@@ -49,14 +47,14 @@ namespace APW2.Web.Controllers
         }
 
         // POST: TaskManagers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TaskId,Name,Description,Status,Priority,AssignedTo,CreatedDate,ModifiedDate,DueDate,CompletedDate,Category,Notes,IsArchived")] TaskManager taskManager)
         {
             if (ModelState.IsValid)
             {
+                taskManager.CreatedDate = DateTime.Now;
+                taskManager.Status = "Pending"; // Set default status
                 _context.Add(taskManager);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -81,8 +79,6 @@ namespace APW2.Web.Controllers
         }
 
         // POST: TaskManagers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TaskId,Name,Description,Status,Priority,AssignedTo,CreatedDate,ModifiedDate,DueDate,CompletedDate,Category,Notes,IsArchived")] TaskManager taskManager)
@@ -96,6 +92,7 @@ namespace APW2.Web.Controllers
             {
                 try
                 {
+                    taskManager.ModifiedDate = DateTime.Now;
                     _context.Update(taskManager);
                     await _context.SaveChangesAsync();
                 }
@@ -146,6 +143,77 @@ namespace APW2.Web.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // POST: TaskManagers/ExecuteAllTasks
+        [HttpPost]
+        public async Task<IActionResult> ExecuteAllTasks()
+        {
+            var tasks = await _context.TaskManagers
+                .Where(t => t.Status != "Completed" && t.Status != "Stopped")
+                .ToListAsync();
+
+            foreach (var task in tasks)
+            {
+                task.Status = "In Progress";
+                task.ModifiedDate = DateTime.Now;
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: TaskManagers/StopTask/5
+        [HttpPost]
+        public async Task<IActionResult> StopTask(int id)
+        {
+            var task = await _context.TaskManagers.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            task.Status = "Stopped";
+            task.ModifiedDate = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: TaskManagers/CompleteTask/5
+        [HttpPost]
+        public async Task<IActionResult> CompleteTask(int id)
+        {
+            var task = await _context.TaskManagers.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            task.Status = "Completed";
+            task.CompletedDate = DateTime.Now;
+            task.ModifiedDate = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: TaskManagers/NewLoad
+        [HttpPost]
+        public IActionResult NewLoad()
+        {
+            // Check if there are any tasks
+            var hasTasks = _context.TaskManagers.Any();
+
+            if (hasTasks)
+            {
+                return BadRequest("Cannot create new load when tasks exist.");
+            }
+
+            // Logic for creating a new batch of tasks could go here
+            return RedirectToAction(nameof(Create));
         }
 
         private bool TaskManagerExists(int id)
