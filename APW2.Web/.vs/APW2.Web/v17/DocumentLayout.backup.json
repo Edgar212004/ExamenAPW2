@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\ExamenAPW2\\APW2.Web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\views\\taskmanagers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\views\\taskmanagers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|d:\\examenapw2\\apw2.web\\apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E2A806-797C-491B-ABE9-DA2C7C4F2391}|APW2.Web\\APW2.Web.csproj|solutionrelative:apw2.web\\controllers\\taskmanagerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24D4452C-04D4-448C-A252-DD294E8ED45A}|APW2.Service\\APW2.Service.csproj|d:\\examenapw2\\apw2.web\\apw2.service\\taskmanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -87,70 +79,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "APW2.Web\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "APW2.Web\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T04:36:28.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "TaskManagersController.cs",
               "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\TaskManagersController.cs",
               "RelativeDocumentMoniker": "APW2.Web\\Controllers\\TaskManagersController.cs",
               "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Controllers\\TaskManagersController.cs",
               "RelativeToolTip": "APW2.Web\\Controllers\\TaskManagersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAwJUAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-13T04:16:10.551Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
-              "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\wwwroot\\favicon.ico",
-              "RelativeDocumentMoniker": "APW2.Web\\wwwroot\\favicon.ico",
-              "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\wwwroot\\favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
-              "RelativeToolTip": "APW2.Web\\wwwroot\\favicon.ico -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
-              "WhenOpened": "2024-12-13T04:36:17.607Z",
-              "EditorCaption": " -  [Spanish (Mexico)] - Icon [32x32, 32 bit, BMP]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Views\\TaskManagers\\Index.cshtml",
               "RelativeDocumentMoniker": "APW2.Web\\Views\\TaskManagers\\Index.cshtml",
               "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Web\\Views\\TaskManagers\\Index.cshtml",
               "RelativeToolTip": "APW2.Web\\Views\\TaskManagers\\Index.cshtml",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-13T04:25:00.156Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "TaskManagerService.cs",
               "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Service\\TaskManagerService.cs",
               "RelativeDocumentMoniker": "APW2.Service\\TaskManagerService.cs",
               "ToolTip": "D:\\ExamenAPW2\\APW2.Web\\APW2.Service\\TaskManagerService.cs",
               "RelativeToolTip": "APW2.Service\\TaskManagerService.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAUwJgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-13T04:18:25.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "TaskManagerRepositoy.cs",
               "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
               "RelativeDocumentMoniker": "APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
@@ -158,12 +125,11 @@
               "RelativeToolTip": "APW2.Data\\Repositorio\\TaskManagerRepositoy.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAIwBUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T04:14:04.467Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-13T04:14:04.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "RepositoryBase.cs",
               "DocumentMoniker": "D:\\ExamenAPW2\\APW2.Web\\APW2.Data\\Repositorio\\RepositoryBase.cs",
               "RelativeDocumentMoniker": "APW2.Data\\Repositorio\\RepositoryBase.cs",
@@ -171,8 +137,7 @@
               "RelativeToolTip": "APW2.Data\\Repositorio\\RepositoryBase.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T04:13:39.507Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-13T04:13:39.507Z"
             }
           ]
         },

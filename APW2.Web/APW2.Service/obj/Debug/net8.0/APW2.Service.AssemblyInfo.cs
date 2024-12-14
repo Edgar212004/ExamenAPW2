@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APW2.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36d1f02bcaf5146cf8de23c207dc3b81713b9ff0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+07a015f8dacad8c278b4f164bfbdc88e051ce163")]
 [assembly: System.Reflection.AssemblyProductAttribute("APW2.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APW2.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

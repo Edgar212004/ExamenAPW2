@@ -121,17 +121,21 @@ namespace APW2.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ExecuteAllTasks()
         {
-            var tasks = _repository.GetAll().ToList();
+            // Filtrar solo tareas pendientes
+            var tasks = _repository.GetAll()
+                .Where(t => t.Status == "Pending")
+                .OrderBy(t => t.CreatedDate)
+                .ToList();
+
             var results = new List<object>();
 
             foreach (var task in tasks)
             {
                 try
                 {
-                    // Crear un CancellationTokenSource con un timeout
-                    using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(2));
+                    // Timeout total de 15 minutos para todas las tareas
+                    using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(15));
 
-                    // Ejecutar la tarea de manera asíncrona
                     var executedTask = await _taskManagerService.ExecuteTaskAsync(task.TaskId, cts.Token);
 
                     results.Add(new
@@ -162,13 +166,12 @@ namespace APW2.Web.Controllers
                 }
             }
 
-            // Si es una solicitud AJAX, devolver resultados como JSON
+            // Respuesta AJAX o redireccionamiento
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return Json(results);
             }
 
-            // Si no es una solicitud AJAX, redirigir al índice
             return RedirectToAction(nameof(Index));
         }
 

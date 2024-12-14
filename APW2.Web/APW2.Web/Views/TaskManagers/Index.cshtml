@@ -113,14 +113,14 @@
                     url: link.attr('href'),
                     type: 'POST',
                     success: function (result) {
-                        // Remove the task row
-                        link.closest('tr').remove();
+                        var row = form.closest('tr');
 
-                        // Update New Load button state
-                        updateNewLoadButton();
-                    },
-                    error: function (xhr) {
-                        alert('Error deleting task');
+                        // Cambiar el texto del botón y deshabilitarlo
+                        var stopButton = row.find('.btn-warning');
+                        stopButton.text('Canceled').prop('disabled', true);
+
+                        // Actualizar el estado visualmente
+                        row.find('td:nth-child(3)').text('Canceled');
                     }
                 });
             });

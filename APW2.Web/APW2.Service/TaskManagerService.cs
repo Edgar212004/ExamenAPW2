@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Concurrent;
 using APW2.Data.Models;
 using APW2.Data.Repositorio;
 
@@ -66,8 +63,9 @@ namespace APW2.Services
 
             try
             {
-                // Cambiar estado a In Progress
+                // Cambiar estado a In Progress y registrar hora de inicio
                 task.Status = ConvertStatusToString(TaskStatus.InProgress);
+                task.ModifiedDate = DateTime.Now;
                 _repository.Update(task);
 
                 // Simular long-running operation
@@ -77,6 +75,8 @@ namespace APW2.Services
                 if (!cts.Token.IsCancellationRequested)
                 {
                     task.Status = ConvertStatusToString(TaskStatus.Completed);
+                    task.CompletedDate = DateTime.Now;
+                    task.ModifiedDate = DateTime.Now;
                     _repository.Update(task);
                 }
 
@@ -86,6 +86,7 @@ namespace APW2.Services
             {
                 // Manejar cancelación
                 task.Status = ConvertStatusToString(TaskStatus.Canceled);
+                task.ModifiedDate = DateTime.Now;
                 _repository.Update(task);
                 throw;
             }
